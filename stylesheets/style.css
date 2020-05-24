@@ -1,4 +1,4 @@
-@import url(//fonts.googleapis.com/css?family=Signika:400);
+@import url('https://fonts.googleapis.com/css?family=Signika:400');
 
 body {
   font-family: Signika;
@@ -16,6 +16,57 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.centered {
+  width: 510px;
+  height: 465px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -35%);
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  border-radius: 25px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 480px;
+  height: 15px;
+  background: #FBDCB1;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  border-radius: 25px;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #EB7121;
+  border-radius: 25px;
+  cursor: url('https://twemoji.maxcdn.com/2/svg/1F325.svg');
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #EB7121;
+  cursor: url('https://twemoji.maxcdn.com/2/svg/1F325.svg');
 }
 
 a {
@@ -40,5 +91,12 @@ footer {
 }
 
 @media (max-width: 530px) {
+  .centered {
+    width: 410px;
+    height: 430px;
+  }
 
+  .slider {
+    width: 410px;
+  }
 }

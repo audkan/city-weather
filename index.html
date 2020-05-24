@@ -6,29 +6,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SF Weather</title>
     <meta name="description" content="Displays San Francisco's microclimates">
-    <link rel="icon" href="img/orangeclock.png">
-    <link rel="apple-touch-icon" href="">
+    <link rel="icon" href="img/city.png">
+    <link rel="apple-touch-icon" href="img/city.png">
     <meta property="og:title" content="SF Weather">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://audkan.github.io/city-weather/">
     <meta property="og:description" content="Displays San Francisco's microclimates">
-    <meta property="og:image" content="">
-    <link rel="stylesheet" href="stylesheets/style.css">
-    <script src="clock.js"></script>
+    <meta property="og:image" content="img/city.png">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css" />
+    <link rel="stylesheet" href="stylesheets/style.css" />
   </head>
   <body>
-    <div class="app">
-      <header class="header">
-        <h1>san francisco microclimates</h1>
-      </header>
-      <main>
-        <div>
-          <div></div>
+    <header class="header">
+      <h1>san francisco microclimates</h1>
+    </header>
+    <main>
+      <div class="weather">
+        <input type="range" class="slider" min="1" max="24" step="1" value="1"
+        id="timeSlider" list="tick" oninput="showVal(this.value)" onchange="showVal(this.value)">
+        <datalist id="tick"></datalist>
+        <br /><br />
+        <span id="time" style="font-size:25px;"></span>
+        <div class="centered">
+          <div id="map"></div>
         </div>
-      </main>
-      <footer>
-        Made by <a target="_blank" href="https://www.instagram.com/oddreeezy/">audkan</a> | Code on <a target="_blank" href="http://github.com/audkan/word-clock">GitHub</a>
-      </footer>
-    </div>
+      </div>
+    </main>
+    <footer>
+      Made by <a target="_blank" href="https://www.instagram.com/oddreeezy/">audkan</a> & <a target="_blank" href="https://github.com/AndrewTheo">andrewtheo</a> | Code on <a target="_blank" href="http://github.com/audkan/word-clock">GitHub</a>
+    </footer>
   </body>
+  <script>
+    mapboxgl.accessToken = "pk.eyJ1Ijoib2RkcmVlZXp5IiwiYSI6ImNrYWticDVyeTBlejcycmxiZ2pzZzl1MnQifQ.Cl-_75c_mRIs4IE1HHXSsg";
+    // need to declare this before using it, or JQuery will throw an error
+    var map = new mapboxgl.Map({
+      container: "map", // container id
+      style: "mapbox://styles/oddreeezy/ckakjxh7l10ld1inzgt0gnh2x", //hosted style id
+      center: [-122.436, 37.768], // starting position
+      zoom: 10.8, // starting zoom
+      interactive: false
+    });
+  </script>
+  <script>
+    var now = new Date();
+    var ticks = [];
+    for (var i = 0; i <= 24; i++) {
+      now.setHours( now.getHours() + 1);
+      var hha = now.toLocaleString('en-US', { hour: 'numeric', hour12: true });
+      hha = hha.replace(" ", ":00 ");
+      ticks.push(hha);
+    }
+
+    var list = document.getElementById('ticks');
+    for (var i = 0; i <= 24; i++) {
+      var option = document.createElement('option');
+      option.value = ticks[i];
+      list.appendChild(option);
+    }
+
+    function showVal(hha) {
+      document.getElementById("time").innerHTML=ticks[hha-1];
+    }
+  </script>
 </html>
