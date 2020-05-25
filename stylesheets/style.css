@@ -15,6 +15,11 @@ body {
   width: 100%;
 }
 
+.full {
+  height: 100%;
+  width: 100%;
+}
+
 h1 {
   font-size: 25px;
   line-height: 28px;
@@ -42,9 +47,9 @@ a:visited {
 }
 
 #console {
-  position: relative;
-  width: 320px;
-  margin: 70px;
+  position: absolute;
+  width: 380px;
+  margin: 6vw;
   padding: 10px 20px;
   background-color: white;
   opacity: 0.95;
@@ -100,12 +105,12 @@ a:visited {
 
 @media (max-width: 530px) {
   #console {
-    margin: 45px;
+    width: 78vw;
+    margin: 5vw;
   }
 }
 
 footer {
-  padding: 2px;
   flex-direction: column;
   justify-content: center;
   position: fixed;
@@ -113,5 +118,5 @@ footer {
   width:100%;
   font-size: small;
   text-transform: lowercase;
-  text-align: center;
+  text-align: right;
 }

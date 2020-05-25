@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="stylesheets/style.css" />
   </head>
   <body>
-    <div class="centered">
+    <div class="full">
       <div id="map"></div>
     </div>
 
@@ -47,7 +47,7 @@
     </div>
 
     <footer>
-      Made by <a target="_blank" href="https://www.instagram.com/oddreeezy/">audkan</a> & <a target="_blank" href="https://github.com/AndrewTheo">andrewtheo</a> | Code on <a target="_blank" href="http://github.com/audkan/word-clock">GitHub</a>
+      Made by <a target="_blank" href="https://www.instagram.com/oddreeezy/">audkan</a> & <a target="_blank" href="https://github.com/AndrewTheo">andrewtheo</a> | Code on <a target="_blank" href="http://github.com/audkan/word-clock">GitHub&nbsp;</a>
     </footer>
   </body>
 
@@ -59,7 +59,8 @@
       style: "mapbox://styles/oddreeezy/ckakjxh7l10ld1inzgt0gnh2x",
       center: [-122.486, 37.762],
       zoom: 11.5,
-      interactive: false
+      interactive: false,
+      attributionControl: false
     });
 
     map.on("load", function() {
@@ -99,7 +100,7 @@
       if (m.matches) {
         var mapDiv = document.getElementById("map");
         map.setZoom(10.6);
-        map.setCenter([-122.436, 37.825]);
+        map.setCenter([-122.436, 37.820]);
       } else {
         map.setZoom(11.5);
         map.setCenter([-122.486, 37.762]);
